@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import axios from '../axios'; // assuming you set baseURL as /api
 import { useNavigate } from 'react-router-dom';
-import './Login.css'; // 👈 import the css file
+import './Login.css'; // import the css file
 
-function Login() {
+function Login({ setToken }) { // receiving setToken as prop
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
@@ -13,7 +13,9 @@ function Login() {
     try {
       const res = await axios.post('https://task-backend-kae8.onrender.com/api/auth/login', { email, password });
       localStorage.setItem('token', res.data.token);
-      navigate('/');
+      setToken(res.data.token);
+      window.location.href = '/';
+
     } catch {
       alert('Invalid credentials');
     }
@@ -40,6 +42,15 @@ function Login() {
           required
         />
         <button type="submit">Login</button>
+
+        {/* 👇 Add this Register Button */}
+        <button
+          type="button"
+          className="register-button"
+          onClick={() => navigate('/register')}
+        >
+          Register
+        </button>
       </form>
     </div>
   );
