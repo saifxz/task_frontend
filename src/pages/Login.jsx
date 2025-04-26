@@ -14,7 +14,9 @@ function Login({ setToken }) { // receiving setToken as prop
       const res = await axios.post('https://task-backend-kae8.onrender.com/api/auth/login', { email, password });
       localStorage.setItem('token', res.data.token);
       setToken(res.data.token);
-      window.location.href = '/';
+    //   navigate("/")
+    //   window.location.href = '/';
+    //   useNavigate()
       
 
     } catch {
@@ -26,7 +28,7 @@ function Login({ setToken }) { // receiving setToken as prop
     <div className="login-container">
 
     <h1>
-        email == saiffuddin9@gmail.com
+        email == jake@gmail.com
     </h1>
     
         <h1> ____password == 12345678</h1>
