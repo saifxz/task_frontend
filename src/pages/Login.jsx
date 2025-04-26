@@ -15,6 +15,7 @@ function Login({ setToken }) { // receiving setToken as prop
       localStorage.setItem('token', res.data.token);
       setToken(res.data.token);
       window.location.href = '/';
+      
 
     } catch {
       alert('Invalid credentials');
@@ -23,6 +24,12 @@ function Login({ setToken }) { // receiving setToken as prop
 
   return (
     <div className="login-container">
+
+    <h1>
+        email == saiffuddin9@gmail.com
+    </h1>
+    
+        <h1> ____password == 12345678</h1>
       <form onSubmit={handleSubmit} aria-label="Login Form" className="login-form">
         <h2>Login</h2>
         <input
